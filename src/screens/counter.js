@@ -1,5 +1,6 @@
-import { View, StyleSheet, Button,Text,  } from "react-native";
+import { View, StyleSheet, Text,  } from "react-native";
 import React, { useState } from "react";
+import {Button} from "../components/button";
 
 const ranger = 10;
 const MIN_COUNT_LIMIT = 10;
@@ -9,7 +10,7 @@ export default function counter() {
     const [count,setCount] = useState(MIN_COUNT_LIMIT);
 
     function onAddPressed(){
-        setCount(count +ranger);
+        setCount(count + ranger);
     }
 
     function onMinusPressed(){
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "30%",
     flexDirection:'row',
-    backgroundColor: "rgb(97, 91, 12)",
+    backgroundColor: "rgb(31, 150, 186)",
     gap: 20,
     justifyContent:"center",
     alignItems:"center",
