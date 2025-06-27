@@ -1,6 +1,6 @@
-import StatePractice from "./src/screens/statePractice";
+import Counter from "./src/screens/counter";
 
 export default function APP() {
-    return <StatePractice/>;
+    return <Counter/>;
 
 }

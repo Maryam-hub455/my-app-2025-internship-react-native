@@ -1,0 +1,54 @@
+import { View, StyleSheet, Button,Text,  } from "react-native";
+import React, { useState } from "react";
+
+const ranger = 10;
+const MIN_COUNT_LIMIT = 10;
+
+export default function counter() {
+
+    const [count,setCount] = useState(MIN_COUNT_LIMIT);
+
+    function onAddPressed(){
+        setCount(count +ranger);
+    }
+
+    function onMinusPressed(){
+        if(count - ranger < MIN_COUNT_LIMIT) return;
+
+        setCount(count - ranger);
+    }
+
+  return (
+
+     
+    <View style={styles.container}>
+        
+        
+      <View style={styles.box}>
+        <View>
+        <Button title={"+"} onPress={onAddPressed} />
+        </View>
+        <Text style={StyleSheet.counterText}>{count}</Text>
+        <View>
+        <Button title={"-"} onPress={onMinusPressed}/>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  box: {
+    width: "100%",
+    height: "30%",
+    flexDirection:'row',
+    backgroundColor: "rgb(97, 91, 12)",
+    gap: 20,
+    justifyContent:"center",
+    alignItems:"center",
+  },
+});
