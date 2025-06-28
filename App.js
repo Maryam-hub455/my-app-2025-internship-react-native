@@ -1,6 +1,6 @@
-import Counter from "./src/screens/counter";
-
+import Listing from "./src/screens/listing";
+import Counter from "./src/screens/listing";
 export default function APP() {
-    return <Counter/>;
+    return <Listing/>;
 
 }

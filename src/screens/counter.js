@@ -1,11 +1,15 @@
-import { View, StyleSheet, Text,  } from "react-native";
+import { View, StyleSheet, Text, ImageBackground,  } from "react-native";
 import React, { useState } from "react";
-import {Button} from "../components/button";
+
+  import Icon from "@expo/vector-icons/Ionicons";
+  
+  import {Button} from "../components/button";
 
 const ranger = 10;
 const MIN_COUNT_LIMIT = 10;
 
 export default function counter() {
+    
 
     const [count,setCount] = useState(MIN_COUNT_LIMIT);
 
@@ -27,11 +31,16 @@ export default function counter() {
         
       <View style={styles.box}>
         <View>
-        <Button title={"+"} onPress={onAddPressed} />
+        <Button title={"+"}
+         onPress={onAddPressed}
+          btnIcon={<Icon size={40} name="heart" color={"purple"}/>}
+           />
         </View>
         <Text style={StyleSheet.counterText}>{count}</Text>
         <View>
-        <Button title={"-"} onPress={onMinusPressed}/>
+        <Button title={"-"} onPress={onMinusPressed}
+          btnIcon={<Icon size={40} name="home" color={"red"}/>}
+        />
         </View>
       </View>
     </View>
@@ -42,6 +51,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    backgroundColor:"rgb(34, 5, 5)",
   },
   box: {
     width: "100%",
@@ -51,5 +61,6 @@ const styles = StyleSheet.create({
     gap: 20,
     justifyContent:"center",
     alignItems:"center",
+    
   },
 });
