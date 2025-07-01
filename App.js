@@ -1,6 +1,9 @@
-import Listing from "./src/screens/listing";
-import Counter from "./src/screens/listing";
+import WhatsappStatus from "./src/screens/whatsappStatus/whatsappStatus";
+
+
+
+
 export default function APP() {
-    return <Listing/>;
+    return <WhatsappStatus/>;
 
 }
