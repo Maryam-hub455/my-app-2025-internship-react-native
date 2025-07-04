@@ -1,9 +1,10 @@
-import WhatsappStatus from "./src/screens/whatsappStatus/whatsappStatus";
+import RootNavigation from "./src/navigation/rootNavigation";
+
 
 
 
 
 export default function APP() {
-    return <WhatsappStatus/>;
+    return <RootNavigation/>;
 
 }
