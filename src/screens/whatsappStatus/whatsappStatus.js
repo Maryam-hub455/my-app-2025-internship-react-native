@@ -1,16 +1,21 @@
-import { FlatList, Text, View } from "react-native";
+import { FlatList,  Touchable,  TouchableOpacity, Text, View } from "react-native";
+
 import React from "react";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Entypo from "@expo/vector-icons/Entypo";
 
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
 
 import { styles } from "./styles";
 import { IconContainer } from "../../components/iconContainer";
 import ConfettiButton from "../../components/confettiButton";
 
-export default function WhatsappStatus() {
+export default function WhatsappStatus({ route }) {
   const numericData = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  const { navigate } = useNavigation();
+  const userSentEmail = route.params.email;
 
   const _renderStatus = (item) => {
     return (
@@ -20,6 +25,9 @@ export default function WhatsappStatus() {
     );
   };
 
+  function onCameraPress() {
+    navigate("Camera");
+  }
   return (
     <View>
       <View style={styles.header}>
@@ -32,7 +40,7 @@ export default function WhatsappStatus() {
             />
           }
         />
-        <Text style={styles.headerText}>Updates</Text>
+        <Text style={styles.headerText}>Updates for {userSentEmail}</Text>
 
         <View style={styles.statusListing}>
           <View style={styles.statusListingHeading}>
@@ -41,6 +49,11 @@ export default function WhatsappStatus() {
               <IconContainer
                 icon={<Entypo name="camera" size={24} color="black" />}
               />
+              <TouchableOpacity onPress={onCameraPress}>
+                <IconContainer
+                  icon={<Entypo name="camera" size={24} color="black" />}
+                />
+              </TouchableOpacity>
               <IconContainer
                 icon={<Ionicons name="pencil" size={24} color="black" />}
               />
@@ -57,8 +70,7 @@ export default function WhatsappStatus() {
         </View>
       </View>
 
-      <ConfettiButton/>
-
+      <ConfettiButton />
     </View>
   );
 }

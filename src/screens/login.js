@@ -1,5 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
+
 import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -10,13 +12,16 @@ import {
 } from "react-native";
 
 export default function Login() {
+  const [Email] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
-  function onLoginPress(){
-    navigate("WhatsappStatus");
+  function onLoginPress() {
+    navigate("WhatsappStatus", { email: email });
   }
-  
+
   return (
     <ImageBackground
       source={{
@@ -25,13 +30,18 @@ export default function Login() {
       style={styles.container}
     >
       <Image style={styles.img} source={require("../../assets/img.png")} />
+
       <TextInput style={styles.input} placeholder="Enter your Email" />
+
       <TextInput
         style={styles.input}
         placeholder="Enter your Password"
         secureTextEntry={true}
       />
+
       <View style={styles.buttonCon}>
+        <Button title="Login" />
+
         <Button title="Login" onPress={onLoginPress} />
       </View>
     </ImageBackground>
@@ -41,25 +51,40 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+
     backgroundColor: "white",
+
     justifyContent: "center",
+
     alignItems: "center",
+
     gap: 30,
+
     paddingLeft: 10,
+
     paddingRight: 10,
   },
+
   img: {
     width: 100,
+
     height: 100,
+
     borderRadius: 100,
   },
+
   input: {
     width: "100%",
+
     borderColor: "black",
+
     borderWidth: 1,
+
     borderRadius: 100,
+
     padding: 20,
   },
+
   buttonCon: {
     width: "100%",
   },
