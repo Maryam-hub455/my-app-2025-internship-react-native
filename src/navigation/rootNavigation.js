@@ -1,4 +1,3 @@
-
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -7,6 +6,7 @@ import WhatsappStatus from "../screens/whatsappStatus/whatsappStatus";
 import Camera from "../screens/camera";
 import PracticeMedia from "../screens/practiceMedia";
 import AboutYou from "../screens/aboutYou";
+import DesignSystemPractice from "../screens/designSystemPractice";
 
 const AppStack = createNativeStackNavigator();
 
@@ -14,9 +14,13 @@ export default function RootNavigation() {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="AboutYou"
+        initialRouteName="designSystemPractice"
         screenOptions={{ headerShown: false }}
       >
+        <AppStack.Screen
+          name="designSystemPractice"
+          component={DesignSystemPractice}
+        />
         <AppStack.Screen name="AboutYou" component={AboutYou} />
         <AppStack.Screen name="PracticeMedia" component={PracticeMedia} />
         <AppStack.Screen
