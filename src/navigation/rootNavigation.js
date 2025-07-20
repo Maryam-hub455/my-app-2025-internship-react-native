@@ -7,6 +7,7 @@ import Camera from "../screens/camera";
 import PracticeMedia from "../screens/practiceMedia";
 import AboutYou from "../screens/aboutYou";
 import DesignSystemPractice from "../screens/designSystemPractice";
+import LoadingPractice from "../screens/loadingPractice";
 
 const AppStack = createNativeStackNavigator();
 
@@ -14,9 +15,14 @@ export default function RootNavigation() {
   return (
     <NavigationContainer>
       <AppStack.Navigator
-        initialRouteName="Login"
+        initialRouteName="LoadingPractice"
         screenOptions={{ headerShown: false }}
       >
+        <AppStack.Screen
+          name="LoadingPractice"
+          component={LoadingPractice}
+          options={{ headerShown: false}}
+        />
         <AppStack.Screen
           name="designSystemPractice"
           component={DesignSystemPractice}
