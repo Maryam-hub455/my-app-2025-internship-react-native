@@ -11,6 +11,9 @@ import {
   ImageBackground,
 } from "react-native";
 
+import { auth } from "../database/firebaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
 export default function Login() {
   const [Email] = useState("");
   const [email, setEmail] = useState("");
@@ -18,8 +21,12 @@ export default function Login() {
 
   const { navigate } = useNavigation();
 
-  function onLoginPress() {
-    navigate("WhatsappStatus", { email: email });
+  async function onLoginPress() {
+    try{
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+    } catch (error){
+      alert (error.message);
+    }
   }
 
   return (
@@ -31,17 +38,22 @@ export default function Login() {
     >
       <Image style={styles.img} source={require("../../assets/img.png")} />
 
-      <TextInput style={styles.input} placeholder="Enter your Email" />
+      <TextInput
+        placeholderTextColor={"white"}
+        style={styles.input}
+        placeholder="Enter your Email"
+        onChangeText={setEmail}
+      />
 
       <TextInput
         style={styles.input}
         placeholder="Enter your Password"
         secureTextEntry={true}
+        placeholderTextColor={"white"}
+        onChangeText={setPassword}
       />
 
       <View style={styles.buttonCon}>
-        <Button title="Login" />
-
         <Button title="Login" onPress={onLoginPress} />
       </View>
     </ImageBackground>
