@@ -1,4 +1,4 @@
-import { View, Button, Image, Text } from "react-native";
+import { View, Button, Image,  } from "react-native";
 
 import Animated, {
   useSharedValue,
@@ -8,6 +8,7 @@ import Animated, {
   withRepeat,
   withSequence,
 } from "react-native-reanimated";
+import { MotiView} from "moti";
 
 const ANGLE = 10;
 
@@ -62,6 +63,16 @@ export default function animationPractice() {
           }}
         />
       </Animated.View>
+
+      <MotiView
+      className="w-[200px] h-[200px] rounded-full bg-red-500"
+       from={{ opacity: 0 }} 
+       animate={{ opacity: 1 }}
+        transition={{
+    type: 'timing',
+    duration: 4500,
+        }}
+        />
 
       <Button onPress={handlePress} title="Click me" />
     </View>
